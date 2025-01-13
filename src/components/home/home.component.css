@@ -1,0 +1,92 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  height: 100%;
+}
+
+aside img {
+  height: 250px;
+  width: 150px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+article {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #464655;
+}
+
+.image-list {
+  position: relative;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.image-list i
+{
+  color: #464655;
+}
+
+.nav-button {
+  position: absolute;
+  bottom: 0px;
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-button.left {
+  left: 10px;
+}
+
+.nav-button.right {
+  right: 10px;
+}
+
+.home-mid
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-left: 0.01cm solid #1a1a1a; /* Borde izquierdo */
+  border-right: 0.01cm solid #1a1a1a; /* Borde derecho */
+}
+
+.cards-list
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 17px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 90%;
+}

@@ -1,0 +1,14 @@
+<article>
+  <div class="image-container">
+    <img [src]="product.image" alt="video_card_image">
+    <button class="hover-button" (click)="goToProduct(product)">
+      <i class="fa-regular fa-eye"></i>
+    </button>
+  </div>
+  <p id="product">
+    <a (click)="goToProduct(product)">{{ product.title }}</a>
+  </p>
+  <p id="brand">Marca: {{ product.brand }}</p>
+  <p id="price">$ {{ product.price_d }} (S/ {{product.price_s}})</p>
+  <button class="buy" (click)="goToProduct(product)">Comprar</button>
+</article>

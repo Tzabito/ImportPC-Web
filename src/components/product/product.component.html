@@ -1,0 +1,58 @@
+<body>
+  <article *ngIf="product">
+    <div class="left-side">
+      <div class="left-side">
+        <img [src]="selectedImage" alt="Product Image" class="main-image">
+
+        <div class="carousel">
+          <button class="carousel-btn left" (click)="prevImage()"><i class="fa-solid fa-square-caret-left"></i></button>
+
+          <div class="image-list">
+            <img *ngFor="let image of visibleImages"
+                 [title]="image"
+                 [src]="image"
+                 alt="Product Image"
+                 (click)="selectImage(image)"
+                 [class.selected]="image === selectedImage">
+          </div>
+
+          <button class="carousel-btn right" (click)="nextImage()"><i class="fa-solid fa-square-caret-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <h1>{{ product.title }}</h1>
+      <a class="brand">
+        <label>Marca:</label>
+        <span> {{ product.brand }}</span>
+      </a>
+
+      <a class="stock">
+        <label>Cantidad:</label>
+        <span> {{ product.stock }} unidades</span>
+      </a>
+
+      <div class="block">
+        <div class="block-price">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <div>
+            <h2>S/ {{ product.price_s }} ($ {{product.price_d}})</h2>
+            <p>*Sin costos adicionales al pagar en efectivo o mediante transferencia bancaria*</p>
+          </div>
+        </div>
+
+        <div class="credit">
+          <i class="fa-regular fa-credit-card"></i>
+          <p> *Se aplicara un recargo del 5% adicional para pagos con tarjeta de crédito o débito*</p>
+        </div>
+
+        <div class="block-bottom">
+          <button><i class="fa-solid fa-bag-shopping"></i> Comprar</button>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</body>
+

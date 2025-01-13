@@ -1,0 +1,144 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<header class="header">
+  <div class="top-bar">
+    <div class="text-icon">
+      <i class="fa-solid fa-circle-user"></i>
+      <a href="">Atención al Cliente: 913 862 963</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-regular fa-copy"></i>
+      <a href="#">Términos y Condiciones</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-solid fa-medal"></i>
+      <a href="#">Garantía</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-brands fa-square-facebook"></i>
+      <a href="#">Facebook</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-brands fa-instagram"></i>
+      <a href="#">Instagram</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-brands fa-tiktok"></i>
+      <a href="#">Tiktok</a>
+    </div>
+
+    <div class="text-icon">
+      <i class="fa-solid fa-envelope"></i>
+      <a href="#">graphicTeam.com</a>
+    </div>
+  </div>
+
+  <div class="middle-bar">
+    <img src="logo.jpg" alt="Logo" class="logo">
+    <div class="search-bar">
+      <div class="input-bar">
+        <div></div>
+        <input type="text" placeholder="¿Qué estás buscando hoy?" class="search-input">
+      </div>
+      <button class="search-button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <div class="payment-methods">
+
+      <span>Métodos de pago:</span>
+
+      <div class="methods">
+        <img src="yape.png" alt="Yape">
+        <img src="plin.png" alt="Plin">
+        <img src="visa.png" alt="Visa" style="width: 70px; height: 20px">
+        <img src="pagoefectivo.png" alt="PagoEfectivo" style="width: 70px">
+      </div>
+
+    </div>
+    <div class="cart">
+      <a href="#">
+        <div>
+          <p>0</p>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        Tu Carrito
+      </a>
+    </div>
+  </div>
+
+  <nav class="bottom-bar">
+    <button class="menu-button" (click)="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul class="dropdown-menu" [ngClass]="{ 'show': isMenuVisible }">
+      <a href="#" (click)="showContent('allInOne')">
+        <li>
+          <div class="icons-bar">
+            <img src="Pc.svg" alt="pcondesk">
+            <a href="#">All In One</a>
+          </div>
+          <i class="fa-solid fa-caret-right"></i>
+        </li>
+      </a>
+      <hr>
+      <a href="#" (click)="showContent('pcs')">
+        <li>
+          <div class="icons-bar">
+            <img src="PcOnDesk.svg">
+            <a href="#">PC's</a>
+          </div>
+          <i class="fa-solid fa-caret-right"></i>
+        </li>
+      </a>
+      <hr>
+      <a href="#" (click)="showContent('monitors')">
+        <li>
+          <div class="icons-bar">
+            <img src="monitor.svg">
+            <a href="#">Monitores</a>
+          </div>
+          <i class="fa-solid fa-caret-right"></i>
+        </li>
+      </a>
+      <hr>
+      <a href="#" (click)="showContent('software')">
+        <li>
+          <div class="icons-bar">
+            <img src="disk.svg">
+            <a href="#">Software/Antivirus</a>
+          </div>
+          <i class="fa-solid fa-caret-right"></i>
+        </li>
+      </a>
+      <hr>
+      <a href="#" (click)="showContent('peripherals')">
+        <li>
+          <div class="icons-bar">
+            <img src="headphones.svg">
+            <a href="#">Periféricos</a>
+          </div>
+          <i class="fa-solid fa-caret-right"></i>
+        </li>
+      </a>
+    </ul>
+
+    <a href="">PC´s Completas</a>
+    <a href="#">Componentes</a>
+    <a href="#">Marcas</a>
+    <a href="#">Ofertas</a>
+    <a href="#">Mantenimientos</a>
+  </nav>
+
+  <div class="dynamic-content" *ngIf="selectedContent">
+    <h3>{{ selectedContentTitle }}</h3>
+    <p>{{ selectedContent }}</p>
+  </div>
+</header>
+

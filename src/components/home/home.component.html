@@ -1,0 +1,30 @@
+<body>
+  <aside>
+    <img *ngFor="let image of images_promo" [src]="image.src" [alt]="image.alt">
+  </aside>
+
+    <div class="home-mid">
+      <div class="image-list">
+        <img [src]="images[currentIndex]" alt="Promotion" id="main-image" />
+        <a href="#" class="nav-button left" (click)="prevImage($event)">
+          <i class="fa-solid fa-square-caret-left"></i>
+        </a>
+        <a href="#" class="nav-button right" (click)="nextImage($event)">
+          <i class="fa-solid fa-square-caret-right"></i>
+        </a>
+      </div>
+
+      <div class="cards-list">
+        <app-card
+          *ngFor="let product of products"
+          [product]="product">
+        </app-card>
+      </div>
+
+    </div>
+
+
+  <aside>
+    <img *ngFor="let image of images_promo" [src]="image.src" [alt]="image.alt">
+  </aside>
+</body>
