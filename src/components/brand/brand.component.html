@@ -1,0 +1,10 @@
+<body>
+  <div class="brand-cards-container">
+    <div class="brand-card" *ngFor="let brand of brandList">
+      <h3>{{ brand.name }}</h3>
+      <a [href]="brand.website" target="_blank" rel="noopener noreferrer" class="brand-link">
+        <img [src]="brand.logo" [alt]="brand.name" class="brand-logo" />
+      </a>
+    </div>
+  </div>
+</body>
