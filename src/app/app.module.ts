@@ -9,6 +9,7 @@ import {MatIcon} from '@angular/material/icon';
 import { HomeComponent } from '../components/home/home.component';
 import { CardComponent } from '../components/card/card.component';
 import { ProductComponent } from '../components/product/product.component';
+import { BrandComponent } from '../components/brand/brand.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductComponent } from '../components/product/product.component';
     HeaderComponent,
     HomeComponent,
     CardComponent,
-    ProductComponent
+    ProductComponent,
+    BrandComponent
   ],
   imports: [
     BrowserModule,
