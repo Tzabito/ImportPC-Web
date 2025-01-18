@@ -34,9 +34,9 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "_redirects",
-                "input": "src",
-                "output": "/"
+                "glob": "**/*",
+                "input": "src/public",
+                "output": "/public"
               }
             ],
             "styles": [
