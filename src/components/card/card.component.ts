@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {Router} from '@angular/router';
 import { generateSlug } from '../UtilsService/utils.service';
-import {ProductService} from '../ProductService/product-service.service';
+import {ProductService} from '../product/ProductService/product-service.service';
 
 @Component({
   selector: 'app-card',
