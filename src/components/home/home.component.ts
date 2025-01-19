@@ -11,20 +11,20 @@ import {products} from './products';
 })
 export class HomeComponent {
   images: string[] = [
-    '/public/promos/promotion01.jpg',
-    '/public/promos/promotion02.jpg',
-    '/public/promos/promotion03.jpg'
+    '/assets/images/promos/promotion01.jpg',
+    '/assets/images/promos/promotion02.jpg',
+    '/assets/images/promos/promotion03.jpg'
   ];
 
   //List of Products
   products = products;
 
   images_promo = [
-    { src: '/public/promos/promo01.png', alt: 'Promo 1' },
-    { src: '/public/promos/promo02.png', alt: 'Promo 2' },
-    { src: '/public/promos/promo02.png', alt: 'Promo 2' },
-    { src: '/public/promos/promo02.png', alt: 'Promo 2' },
-    { src: '/public/promos/promo02.png', alt: 'Promo 2' },
+    { src: '/assets/images/promos/promo01.png', alt: 'Promo 1' },
+    { src: '/assets/images/promos/promo02.png', alt: 'Promo 2' },
+    { src: '/assets/images/promos/promo02.png', alt: 'Promo 2' },
+    { src: '/assets/images/promos/promo02.png', alt: 'Promo 2' },
+    { src: '/assets/images/promos/promo02.png', alt: 'Promo 2' },
   ];
 
   currentIndex: number = 0;
