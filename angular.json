@@ -36,7 +36,7 @@
               {
                 "glob": "**/*",
                 "input": "src/public",
-                "output": "/public"
+                "output": "/assets"
               }
             ],
             "styles": [
@@ -98,7 +98,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input": "public",
+                "input": "src/public",
                 "output": "/public"
               }
             ],
