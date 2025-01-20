@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductService} from './ProductService/product-service.service';
+import {products} from './products';
 
 declare const MercadoPago: any; // Declaración del SDK de Mercado Pago
 
@@ -33,30 +34,40 @@ export class ProductComponent implements OnInit {
       locale: 'es-PE', // Configura el idioma
     });
 
-    // Obtener datos del producto desde localStorage
-    const productData = localStorage.getItem('selectedProduct');
+    // Obtener el slug del producto desde la URL
+    const slug = this.route.snapshot.paramMap.get('slug');
+    if (slug) {
+      // Primero, intentamos obtener los datos del producto desde localStorage
+      const productData = localStorage.getItem('selectedProduct');
 
-    if (productData) {
-      this.product = JSON.parse(productData);
+      if (productData) {
+        // Si los datos están en localStorage, los usamos
+        this.product = JSON.parse(productData);
+      } else {
+        // Si no están en localStorage, buscamos el producto en la lista de productos
+        this.product = this.getProductBySlug(slug);
+      }
 
-      // Agregar imágenes del producto a la lista
-      this.imageList.push(this.product.image01);
-      this.imageList.push(this.product.image02);
-      this.imageList.push(this.product.image03);
-      this.imageList.push(this.product.image04);
-      this.imageList.push(this.product.image05);
-      this.imageList.push(this.product.image06);
+      if (this.product) {
+        // Agregar imágenes del producto a la lista
+        this.imageList.push(this.product.image01);
+        this.imageList.push(this.product.image02);
+        this.imageList.push(this.product.image03);
+        this.imageList.push(this.product.image04);
+        this.imageList.push(this.product.image05);
+        this.imageList.push(this.product.image06);
 
-      // Seleccionar la primera imagen por defecto
-      this.selectedImage = this.imageList[0];
+        // Seleccionar la primera imagen por defecto
+        this.selectedImage = this.imageList[0];
 
-      // Inicializar las imágenes visibles
-      this.updateVisibleImages();
+        // Inicializar las imágenes visibles
+        this.updateVisibleImages();
 
-      // Crear la preferencia de pago
-      this.createPaymentPreference();
-    } else {
-      console.error('No product data available');
+        // Crear la preferencia de pago
+        this.createPaymentPreference();
+      } else {
+        console.error('Producto no encontrado');
+      }
     }
   }
 
@@ -127,5 +138,11 @@ export class ProductComponent implements OnInit {
         preferenceId: this.preferenceId // Usamos el ID de la preferencia creada
       }
     });
+  }
+
+  // Función para obtener un producto por su slug
+  getProductBySlug(slug: string): any {
+    // Buscar en el array de productos basado en el slug
+    return products.find(product => product.title.toLowerCase().replace(/ /g, '-') === slug);
   }
 }
