@@ -1,0 +1,22 @@
+body
+{
+  font-family: "Open Sans", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cb021d;
+  width: 100%;
+  height: 74vh;
+}
+
+.error-page {
+  text-align: center;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+.error-gif {
+  width: 325px;
+  height: auto;
+}
