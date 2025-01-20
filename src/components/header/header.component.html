@@ -78,62 +78,62 @@
       <i class="fa-solid fa-bars"></i>
     </button>
     <ul class="dropdown-menu" [ngClass]="{ 'show': isMenuVisible }">
-      <a href="#" (click)="showContent('allInOne')">
+      <a href="/" (click)="showContent('allInOne')">
         <li>
           <div class="icons-bar">
             <img src="../../assets/images/svg/Pc.svg" alt="pcondesk">
-            <a href="/">All In One</a>
+            <a href="">All In One</a>
           </div>
           <i class="fa-solid fa-caret-right"></i>
         </li>
       </a>
       <hr>
-      <a href="#" (click)="showContent('pcs')">
+      <a href="/pcs" (click)="showContent('pcs')">
         <li>
           <div class="icons-bar">
             <img src="../../assets/images/svg/PcOnDesk.svg">
-            <a href="#">PC's</a>
+            <a href="/pcs">PC's</a>
           </div>
           <i class="fa-solid fa-caret-right"></i>
         </li>
       </a>
       <hr>
-      <a href="#" (click)="showContent('monitors')">
+      <a href="/monitors" (click)="showContent('monitors')">
         <li>
           <div class="icons-bar">
             <img src="../../assets/images/svg/monitor.svg">
-            <a href="#">Monitores</a>
+            <a href="/monitors">Monitores</a>
           </div>
           <i class="fa-solid fa-caret-right"></i>
         </li>
       </a>
       <hr>
-      <a href="#" (click)="showContent('software')">
+      <a href="/softwares" (click)="showContent('software')">
         <li>
           <div class="icons-bar">
             <img src="../../assets/images/svg/disk.svg">
-            <a href="#">Software/Antivirus</a>
+            <a href="/softwares">Software/Antivirus</a>
           </div>
           <i class="fa-solid fa-caret-right"></i>
         </li>
       </a>
       <hr>
-      <a href="#" (click)="showContent('peripherals')">
+      <a href="/peripherals" (click)="showContent('peripherals')">
         <li>
           <div class="icons-bar">
             <img src="../../assets/images/svg/headphones.svg">
-            <a href="#">Periféricos</a>
+            <a href="/peripherals">Periféricos</a>
           </div>
           <i class="fa-solid fa-caret-right"></i>
         </li>
       </a>
     </ul>
 
-    <a href="">PC´s Completas</a>
-    <a href="#">Componentes</a>
+    <a href="/">PC´s Completas</a>
+    <a href="/components">Componentes</a>
     <a href="/brands">Marcas</a>
-    <a href="#">Ofertas</a>
-    <a href="#">Mantenimientos</a>
+    <a href="/offers">Ofertas</a>
+    <a href="/maintenance">Mantenimientos</a>
   </nav>
 
   <div class="dynamic-content" *ngIf="selectedContent">
