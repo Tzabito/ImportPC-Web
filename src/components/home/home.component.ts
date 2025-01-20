@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {brands} from '../brand/brands';
-import {products} from './products';
+import {products} from '../product/products';
 
 @Component({
   selector: 'app-home',

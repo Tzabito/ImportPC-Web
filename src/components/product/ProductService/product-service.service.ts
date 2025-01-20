@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class ProductService {
   private productData: any;
+  private products: any;
 
   setProduct(product: any): void {
     this.productData = product;
