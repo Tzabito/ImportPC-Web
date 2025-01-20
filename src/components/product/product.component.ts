@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductService} from './ProductService/product-service.service';
-import {interval} from 'rxjs';
+
+declare const MercadoPago: any; // Declaración del SDK de Mercado Pago
 
 @Component({
   selector: 'app-product',
@@ -12,11 +13,14 @@ import {interval} from 'rxjs';
 })
 
 export class ProductComponent implements OnInit {
+
+  mp: any; // SDK de Mercado Pago
   product: any = {};
   imageList: string[] = [];
   selectedImage: string = '';  // Imagen seleccionada
   currentIndex: number = 0;  // Índice para el carrusel
   visibleImages: string[] = [];  // Imágenes visibles en el carrusel (4 imágenes)
+  preferenceId: string = ''; // ID de la preferencia de Mercado Pago
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +28,12 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const slug = this.route.snapshot.paramMap.get('slug');
+    // Inicializa el SDK de Mercado Pago con tu clave pública
+    this.mp = new MercadoPago('APP_USR-fa32bab8-b864-4f16-aeef-6a23194cc67a', {
+      locale: 'es-PE', // Configura el idioma
+    });
+
+    // Obtener datos del producto desde localStorage
     const productData = localStorage.getItem('selectedProduct');
 
     if (productData) {
@@ -43,6 +52,9 @@ export class ProductComponent implements OnInit {
 
       // Inicializar las imágenes visibles
       this.updateVisibleImages();
+
+      // Crear la preferencia de pago
+      this.createPaymentPreference();
     } else {
       console.error('No product data available');
     }
@@ -74,5 +86,46 @@ export class ProductComponent implements OnInit {
     this.currentIndex = (this.currentIndex + 1) % this.imageList.length;
     this.updateVisibleImages();
   }
-}
 
+  // Crear la preferencia de pago con Mercado Pago
+  createPaymentPreference(): void {
+    // Llamamos al backend para crear la preferencia y obtener el ID
+    fetch('https://api.mercadopago.com/checkout/preferences', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer APP_USR-798770250958961-012003-e5169cae92ee02e846419cbf1ddd3fc6-425285719` // Reemplaza con tu Access Token de Mercado Pago
+      },
+      body: JSON.stringify({
+        items: [
+          {
+            title: this.product.title,
+            unit_price: parseFloat(this.product.price_s),
+            quantity: 1
+          }
+        ],
+        back_urls: {
+          success: 'https://forjapc.netlify.app/success',
+          failure: 'https://forjapc.netlify.app/failure',
+          pending: 'https://forjapc.netlify.app/pending'
+        },
+        auto_return: 'approved'
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.preferenceId = data.id; // Guardamos el ID de la preferencia
+        this.initMercadoPagoCheckout(); // Inicializamos el checkout
+      })
+      .catch(error => console.error('Error al crear preferencia:', error));
+  }
+
+  // Inicializar el botón de pago de Mercado Pago
+  initMercadoPagoCheckout(): void {
+    this.mp.bricks().create('wallet', 'wallet_container', {
+      initialization: {
+        preferenceId: this.preferenceId // Usamos el ID de la preferencia creada
+      }
+    });
+  }
+}
